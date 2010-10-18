@@ -1,0 +1,1 @@
+var Inotify = require("inotify++");
