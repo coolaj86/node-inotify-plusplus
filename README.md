@@ -1,4 +1,4 @@
-Purpose
+node-inotify++
 ====
 
 A wrapper around [`node-inotify`](http://github.com/c4milo/node-inotify) which is more like `JavaScript` and less like `C`.
@@ -8,41 +8,48 @@ A wrapper around [`node-inotify`](http://github.com/c4milo/node-inotify) which i
   * each event has a default handler
   * only the events which have callbacks are listened to
     * `all_events` registers listening for all events, not just the ones with specific callbacks
-    * TODO all this to be tweaked to listen only for other events with callbacks
+    * TODO allow this to be tweaked to listen only for other events with callbacks
 
 Usage
 ====
 
+instantiation
+----
+
     var Inotify = require('inotify++'),
-        inotify;
+        inotify,
+        directive;
 
     inotify = Inotify.create(true); // stand-alone, persistent mode, runs until you hit ctrl+c
     //inotify = Inotify.create(); // quits when event queue is empty
 
+with Default Handlers
+----
 
-    /*
-     * Using default handlers to watch only `access`, `close_write`, and `open` events
-     */
-    inotify.watch({
+The default handler simply outputs the `docstring` such as "File was opened"
+
+    directive = {
         access: true,
         close_write: true,
         open: true
-    }, './path/to/watch');
+    };
+    inotify.watch(directive, './path/to/watch');
 
+with Custom Handlers
+----
 
-    /*
-     * Using custom handlers for the events `all_events`close_nowrite`, and `modify`, but the defaults for `delete`
-     */
-    inotify.watch({
-        all_events: function (ev) { console.log("some things happened: " + ev.masks.toString()) },
+    directive = {
+        all_events: function (ev) {
+          console.log("some things happened: " + ev.masks.toString())
+        },
         moved_from: true
-    }, '/path/to/watch');
+    }
+    inotify.watch(directive, './path/to/watch');
 
+with Modules
+----
 
-    /*
-     * Using a "module" with public methods exported as handlers
-     */
-    var directive = (function() {
+    directive = (function() {
         // private variables
         var count = 0,
           validate_watch,
@@ -84,6 +91,7 @@ Usage
           delete: true
         };
     }());
+    inotify.watch(directive, './path/to/watch');
 
 
 note that "ev.masks" is an array of strings, not a bitmask and "ev.watch" is the path rather than the watch descriptor.
