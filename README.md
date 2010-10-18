@@ -93,6 +93,14 @@ with Modules
     }());
     inotify.watch(directive, './path/to/watch');
 
+stopping / restarting watch
+----
+
+    var unwatch, rewatch;
+    unwatch = inotify.watch(dirctive, path);
+    rewatch = unwatch(); // stops watching
+    unwach = rewatch();
+
 
 note that "ev.masks" is an array of strings, not a bitmask and "ev.watch" is the path rather than the watch descriptor.
 
