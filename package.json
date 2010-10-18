@@ -1,0 +1,12 @@
+{
+  "name"          : "inotify++",
+  "description"   : "A wrapper around node-inotify that is more like JavaScript, less like C, and easier for beginners",
+  "url"           : "http://github.com/coolaj86/node-inotify-plusplus/",
+  "keywords"      : ["util", "inotify"],
+  "author"        : "AJ ONeal <coolaj86@gmail.com>",
+  "contributors"  : [],
+  "dependencies"  : ["inotify"],
+  "lib"           : "lib",
+  "main"          : "./lib/inotify++",
+  "version"       : "0.9"
+}
