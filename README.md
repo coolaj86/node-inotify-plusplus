@@ -16,7 +16,7 @@ Usage
 instantiation
 ----
 
-    var Inotify = require('inotify++'),
+    var Inotify = require('inotify-plusplus'), // should be 'inotify++', but npm has issues with the ++
         inotify,
         directive;
 
