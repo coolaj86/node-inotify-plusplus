@@ -16,7 +16,7 @@ Usage
 instantiation
 ----
 
-    var Inotify = require('inotify++'),
+    var Inotify = require('inotify-plusplus'), // should be 'inotify++', but npm has issues with the ++
         inotify,
         directive,
         options;
@@ -138,7 +138,7 @@ Install node-inotify++:
 
     # or
 
-    npm install inotify++ # installing inotify from source
+    npm install inotify-plusplus # installing inotify from npm currently fails and hence this may fail
 
 Documentation
 ====
