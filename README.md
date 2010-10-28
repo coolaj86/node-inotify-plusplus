@@ -18,7 +18,8 @@ instantiation
 
     var Inotify = require('inotify++'),
         inotify,
-        directive;
+        directive,
+        options;
 
     inotify = Inotify.create(true); // stand-alone, persistent mode, runs until you hit ctrl+c
     //inotify = Inotify.create(); // quits when event queue is empty
@@ -33,7 +34,10 @@ The default handler simply outputs the `docstring` such as "File was opened"
         close_write: true,
         open: true
     };
-    inotify.watch(directive, './path/to/watch');
+    options = {
+        allow_bad_paths: true, // (default false) don't throw an error if the path to watch doesn't exist
+    };
+    inotify.watch(directive, './path/to/watch', {});
 
 with Custom Handlers
 ----
@@ -43,6 +47,10 @@ with Custom Handlers
           console.log("some things happened: " + ev.masks.toString())
         },
         moved_from: true
+    }
+    options = {
+        all_events_is_catchall: true // by default (false) "all_events" only catches events already listened for.
+                                     // this option tells "all_events" to catch all events, period.
     }
     inotify.watch(directive, './path/to/watch');
 
