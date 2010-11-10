@@ -6,9 +6,9 @@ A wrapper around [`node-inotify`](http://github.com/c4milo/node-inotify) which i
   * strings instead of bitmasks
   * self-documenting: `console.dir(inotify)` tells you just about all you need to know.
   * each event has a default handler
-  * only the events which have callbacks are listened to
-    * `all_events` registers listening for all events, not just the ones with specific callbacks
-    * TODO allow this to be tweaked to listen only for other events with callbacks
+  * by default only the events which have callbacks are listened to
+    * `all_events` listens to all events with registered callbacks
+    * the option `all_events_is_catchall` causes `all_events` to listen on all events, period.
 
 Usage
 ====
@@ -53,6 +53,12 @@ with Custom Handlers
                                      // this option tells "all_events" to catch all events, period.
     }
     inotify.watch(directive, './path/to/watch');
+
+note that "ev.masks" is an array of strings, not a bitmask and "ev.watch" is the path rather than the watch descriptor.
+
+Example `ev`:
+
+    { watch: '/path/to/watch', masks: '["access", "move_to"]', cookie: 1, name: 'name_of_file' }
 
 with Modules
 ----
@@ -108,13 +114,6 @@ stopping / restarting watch
     unwatch = inotify.watch(dirctive, path);
     rewatch = unwatch(); // stops watching
     unwach = rewatch();
-
-
-note that "ev.masks" is an array of strings, not a bitmask and "ev.watch" is the path rather than the watch descriptor.
-
-Example `ev`:
-
-    { watch: '/path/to/watch', masks: '["access", "move_to"]', cookie: 1, name: 'name_of_file' }
 
 Installation
 ====
