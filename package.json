@@ -9,9 +9,9 @@
   "author": "AJ ONeal <coolaj86@gmail.com>",
   "contributors": [],
   "dependencies": {
-    "inotify": "~1.2.0"
+    "inotify": "~1.4.0"
   },
   "lib": "lib",
   "main": "./lib/inotify++",
-  "version": "1.0.2"
+  "version": "1.0.3"
 }
