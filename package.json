@@ -1,5 +1,5 @@
 {
-    "name": "inotify-plusplus",
+    "name": "gbaumgart.inotify-plusplus",
     "description": "A wrapper around node-inotify that is more like JavaScript, less like C, and easier for beginners",
     "url": "http://github.com/coolaj86/node-inotify-plusplus/",
     "keywords": [
