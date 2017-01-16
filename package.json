@@ -1,17 +1,17 @@
 {
-  "name": "inotify-plusplus",
-  "description": "A wrapper around node-inotify that is more like JavaScript, less like C, and easier for beginners",
-  "url": "http://github.com/coolaj86/node-inotify-plusplus/",
-  "keywords": [
-    "util",
-    "inotify"
-  ],
-  "author": "AJ ONeal <coolaj86@gmail.com>",
-  "contributors": [],
-  "dependencies": {
-    "inotify": "~1.2.0"
-  },
-  "lib": "lib",
-  "main": "./lib/inotify++",
-  "version": "1.0.2"
+    "name": "gbaumgart.inotify-plusplus",
+    "description": "A wrapper around node-inotify that is more like JavaScript, less like C, and easier for beginners",
+    "url": "http://github.com/coolaj86/node-inotify-plusplus/",
+    "keywords": [
+        "util",
+        "inotify"
+    ],
+    "author": "AJ ONeal <coolaj86@gmail.com>",
+    "contributors": [],
+    "dependencies": {
+        "inotify": "~1.4.0"
+    },
+    "lib": "lib",
+    "main": "./lib/inotify++",
+    "version": "1.0.4"
 }
